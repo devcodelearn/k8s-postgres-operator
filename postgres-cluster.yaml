@@ -1,0 +1,23 @@
+apiVersion: "acid.zalan.do/v1"
+kind: postgresql
+metadata:
+  name: postgres-cluster
+spec:
+  teamId: "data-platform"
+  volume:
+    size: 10Gi
+  numberOfInstances: 2
+  users:
+    app_user:
+      - superuser
+  databases:
+    app_db: app_user
+  postgresql:
+    version: "14"
+  resources:
+    requests:
+      cpu: "500m"
+      memory: "512Mi"
+    limits:
+      cpu: "1"
+      memory: "1Gi"
